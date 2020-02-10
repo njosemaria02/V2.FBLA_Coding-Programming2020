@@ -13,14 +13,14 @@
 1. Return to GitHub and download the above files as a ZIP with the **"Clone or download"** button.
 2. Find the file in your File Directory and enter the zip folder.
 3. Drag the unzipped copy of the folder to desktop by dragging.
-4. Rename the folder in the desktop ***"DesktopCSATest"***.
+4. Rename the folder in the desktop ***"DesktopCSATest2"***.
 5. Return to Eclipse.
 6. Go to **"File"** > **"Open Projects from File System..."**.
 7. Press "Directory...".
-8. Find the ***"DesktopCSATest"*** folder in your Desktop and simply select the folder. Press "OK".
+8. Find the ***"DesktopCSATest2"*** folder in your Desktop and simply select the folder. Press "OK".
 9. Press **"Finish"** at the bottom.
 10. Close out of "Welcome" with the red "X".
-11. You should see "DesktopCSATest" next to an image of a manilla folder under "Package Explorer".
+11. You should see ***"DesktopCSATest2"*** next to an image of a manilla folder under ***"Package Explorer"***.
 12. Press the **grey arrow** next to the manilla folder.
 13. Press the **grey arrow** next to ***"src"***.
 14. Press the **grey arrow** next to ***"(default package)"***.
