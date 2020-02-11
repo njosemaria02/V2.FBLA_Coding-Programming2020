@@ -567,9 +567,7 @@ public class CSA_AwardProgram {
 		    }
 	    	needUpdateTable = false;
 	    }
-	
-	    JLabel thing = new JLabel("student count: " + alpharetta.getArrayLength());
-	    
+		    
 	    
 		// adjusts column sizes
 	    JTable jt = new JTable(data, column);
@@ -712,7 +710,6 @@ public class CSA_AwardProgram {
         //Note: anything you want ordered together with FlowLayout must be in same panel
 	    firstPanel.add(welcomeText);
 	    firstPanel.add(needHelp);
-	    firstPanel.add(thing);
 	    firstPanel.setBackground(Color.white);
 
 	    
