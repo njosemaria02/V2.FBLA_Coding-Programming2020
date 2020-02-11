@@ -3,6 +3,7 @@
 ## Running this program.
 ### Download Eclipse.
 1. Download Eclipse [here](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R2/eclipse-inst-win64.exe).
+*Note: Eclipse is a coding environment/workspace, not a virus. Do not worry!*
 2. Select **"Eclipse IDE for Java Developers"** and the default as the installation folder. *Ex: "C:\Users\1100299029\eclipse\java-oxygen"*. Please ensure **"create start menu entry"** and **"create desktop shortcut"** are both checked.
 3. Accept terms of agreement and licenses.
 4. Wait as it downloads until the green loading bar text goes from "Installing..." to "Launch". **Press the button** to launch.
