@@ -14,20 +14,21 @@ import java.util.ArrayList;
 import javax.print.DocPrintJob;
 
 
-// font is Segoe UI
-//Segoe MDL2 Assets
-//Segoe Print
-//Segoe Script
-//Segoe UI
-//Segoe UI Black
-//Segoe UI Emoji
-//Segoe UI Historic
-//Segoe UI Light
-//Segoe UI Semibold
-//Segoe UI Semilight
-//Segoe UI Symbol
+/** Creator's Note: This program was created with the idea that an FBLA advisor would be logging a student's information, 
+ * both personal AND service (meaning both name, ID, and grade AND specific projects, descriptions, and hours. 
+ * 
+ * Additionally, rather than having the advisor keep track of a student service information on an external sheet or page
+ * and updating it within this program, the application allows the advisor to log the hours right in the program to keep 
+ * track of students' total hours for the advisor, ultimately saving them time and struggle.
+ * 
+ * @author Nathaly Jose-Maria
+ *
+ */
+
 
 public class CSA_AwardProgram {	
+	/** This code here sets a universal font for all text shown in GUI frames, including labels, tables, buttons, and more. 
+	**/
 	public static void setUIFont (javax.swing.plaf.FontUIResource f){
 	    java.util.Enumeration keys = UIManager.getDefaults().keys();
 	    while (keys.hasMoreElements()) {
@@ -38,16 +39,19 @@ public class CSA_AwardProgram {
 	      }
 	    } 
 	
-	
+	/** This code here sets up the program's root file name so as to successfully open up the file and proceed with the necessary 
+	operating functions. As you can see, there were many names and versions I have used and tested throughout the creation of 
+	this project. Thus, please ignore the file names not currently used in your project version as I use it while testing on my 
+	local system.
+	**/
 	private static boolean mainActive = false;
 	private static boolean needUpdateTable = false;
 	
 	private static String folderName = ("C:/Users/" + System.getProperty("user.name").toString() + "/Desktop/DesktopCSATest2");
-	//private static String folderName = ("C:/Users/1100299029/OneDrive - Fulton County Schools");
+	//private static String folderName = ("C:/Users/" + System.getProperty("user.name").toString() + "/OneDrive - Fulton County Schools/Desktop/DesktopCSATest");
 	
-	private static School_CSA alpharetta;
 	
-	// gitHub test
+
 	private  static String fileName = folderName + "/src/StudentDatabase.txt";
 	private static String serviceFileName = folderName + "/src/ServiceDatabase.txt";
 
@@ -61,13 +65,20 @@ public class CSA_AwardProgram {
 	//private static String serviceFileName = "C:/Users/SYFGWC19/OneDrive - Fulton County Schools/FBLA Programming 2019/FBLACSA2019-2020/src/ServiceDatabase.txt";
 
 	
+	private static School_CSA alpharetta;
+
+	
 	public static void setMainActive(boolean decision)
 	{
 		mainActive = decision;
 	}
 	
 	
-	// creates array for application to used based on text file
+
+	/** Creates array for application to use based on text file. Essentially, this method reads the StudentDatabase text file
+	to recreate the array everytime the system is opened to as to be able to easily manipulate the data while being able to 
+	update the text files themselves for future updates. 
+	**/
 	private static void createSchoolRoster()
 	{	int count = 0;
 		//need to recreate array each time program opens since will not remember from last use
@@ -210,7 +221,11 @@ public class CSA_AwardProgram {
 			
 	}
 
-	
+	/** similar to the createStudentRoster() above, this method is called following the creation of the student array within the
+	system to update each individual's volunteer information based off the ServiceDatabase text file. Rather than reading in the 
+	student information to many an array like the method above, it reads StudentDatabase.txt to create the ServiceProejct and 
+	ServiceHour projects that get appeded to each student.
+	**/
 	public static void createServiceDatabase() {
 		
 		int count = alpharetta.getArrayLength();
@@ -380,10 +395,16 @@ public class CSA_AwardProgram {
 		System.out.println("Alpharetta service database successfully integrated into application\n");
 	}
 	
+	
+	/** the Welcome GUI is the first page that opens up to users introducing the FBLA Community Service System and prompting
+	for the user (the school FBLA advisor) to either register a new student or go directly to the Main Page that holds a general
+	view of the advisor's students and more tasks.
+	**/
 	public static void buildWelcomeGUI()
 	{	
+		
 		createSchoolRoster();
-				
+						
 		CSA_AwardProgram.setUIFont(new javax.swing.plaf.FontUIResource("Segoe UI",Font.PLAIN,14));
 
 
@@ -454,6 +475,14 @@ public class CSA_AwardProgram {
 	}
 	
 	
+	/** the Main Page is the hub for the entire program. It provides a general view of the FBLA advisor's students, including a 
+	quick glance of their total service hours and if they are eligible for a service award. Aside from this table, the advisor
+	has multiple options for viewing and editing their students' information. Options include adding a student, deleting a student, and editing
+	a student's information (by clicking on the student name), printing a report of students' total hours, and printing individual
+	reports of award categories' winners, such as all Community Level winners. To adjust students' total hours, the advisor must
+	log service projects and hours for them, which can be found by either going into the student's individual profile or selecting
+	the student after pressing the "View/Edit Service Information" button.
+	**/
 	public static void buildMainPageGUI()  
 	{
 		createSchoolRoster();
@@ -539,6 +568,7 @@ public class CSA_AwardProgram {
 	    	needUpdateTable = false;
 	    }
 	
+	    JLabel thing = new JLabel("student count: " + alpharetta.getArrayLength());
 	    
 	    
 		// adjusts column sizes
@@ -682,6 +712,7 @@ public class CSA_AwardProgram {
         //Note: anything you want ordered together with FlowLayout must be in same panel
 	    firstPanel.add(welcomeText);
 	    firstPanel.add(needHelp);
+	    firstPanel.add(thing);
 	    firstPanel.setBackground(Color.white);
 
 	    
@@ -717,7 +748,10 @@ public class CSA_AwardProgram {
 	    frame.setVisible(true);	    
 	}
 	
-	
+	/** This is the GUI that appears when registering a new student in the system. All it requires is a student id, first name, last name, 
+	 * and grade. From there, a Student object is created in addition to an empty ServiceProject array that gets edited later with user
+	 * input. 
+	 */
 	 public static void buildRegisterNewStudentGUI()
 	 {		
      	//popup window appear
@@ -840,6 +874,15 @@ public class CSA_AwardProgram {
          popup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
          popup.setVisible(true);	   
 	    }
+	 
+	 /** This creates the GUI for student deletion. I created two ways of deleting students because of the two different reasons
+	  * an advisor would delete a student: 1) because it is the start of a new school year, or 2) an individual has left FBLA or
+	  * decided to no longer participate in the event. Thus, with reason 1, the advisor can bump all students up a grade. On the
+	  * other hand, if the advisor wants to delete individuals, they can simply select them with the radio buttons and press the
+	  * "delete" butotn at the bottom of the page. Better yet, the students are sorted by grade, making locating them easy! 
+	  * 
+	  * *Note: there is no sorting system within this applicaton yet. The ability to sort alphabetically is coming soon!
+	  */
 	 
 	 public static void makeDeleteStudentGUI() {
 		 int alphalen = alpharetta.getArrayLength();		 
@@ -1079,7 +1122,13 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);	
 	 }
 	 
-	 
+	 /** 
+	  * This builds the GUI for viewing an individual's information, such as name, ID, and grade. This does NOT show
+	  * their service information! This is in another GUI, which is created with the method "buildIndivServiceProfileGUI(Student)".
+	  * 
+	  * @param stu
+	  * 	A Student object is taken as a parameter because it makes it easier when calling specific variables and methods.
+	  */
 	 public static void buildIndivStudentProfileGUI(Student stu)
 	 {
 		 /** Initializations ********************************************************************/
@@ -1183,7 +1232,13 @@ public class CSA_AwardProgram {
 		 indivStuFrame.setVisible(true);	 		 
 	 }
 	
-	
+	/**
+	 * This creates a GUI that allows the user (FBLA advisor) to go in and edit a student's information, particularly name, ID, 
+	 * and grade level.
+	 * 
+	 * @param stuToEdit
+	 * 	As mentioned earlier, a Student object is taken as a parameter because it makes it easier when calling specific variables and methods.
+	 */
 	 public static void buildEditIndivStuGUI(Student stuToEdit)
 	 {		
 		JFrame frame = new JFrame("Edit Individual Student");
@@ -1280,6 +1335,9 @@ public class CSA_AwardProgram {
 		frame.setVisible(true);	
 	 }
 	 
+	 /** This GUI allows the user another way of getting to an individual student's service information. It acts
+	  * as a simple student selector screen that then redirects the user to the proper student's profile. 
+	  */
 	 public static void buildServiceHourStudentSelectorGUI()
 	 {
 		 JFrame frame = new JFrame("Student Selection Screen for Viewing Service Hours");
@@ -1375,6 +1433,13 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);	
 	 }
 	 
+	 /**
+	  * This is where the GUi for seeing a student's service information is made. It utilized a Tabbed Pane to
+	  * show individual projects and their name, description, and connected hours.
+	  * 
+	  *  @param student
+	  * 	As mentioned earlier, a Student object is taken as a parameter because it makes it easier when calling specific variables and methods.
+	  */
 	 public static void buildIndivServiceProfileGUI(Student student) {
 		 
 		 JFrame frame = new JFrame(student.getFullName() + "'s Community Service Information");
@@ -1546,6 +1611,15 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);	
 	 }
 	 
+	 
+	 /** This is a GUI that allows the advisor to add a new project for a specific student. All that is required is
+	  * a project name, description, and initial date and time of service. This was added with the assumption that 
+	  * a new project being entered in the system has already happened and thus can already be given a date and time.	  * 
+	  * 
+	  * @param student
+	  *  A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
+	 
 	 public static void addNewProjectGUI(Student student) {
 		 JFrame frame = new JFrame("Adding New Project for " + student.getFullName());
 		 JPanel mainPanel = new JPanel();
@@ -1645,6 +1719,14 @@ public class CSA_AwardProgram {
 		 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
 		 frame.setVisible(true);	
 	 }
+	 
+	 /** This is a GUI that allows the advisor to add a new service hour for a specific service project for a 
+	  * specific student. All that is required is the selection of a specific project and the new date and time 
+	  * of service.  
+	  * 
+	  * @param student
+	  *  A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 
 	 public static void addNewHourGUI(Student student) {
 		 JFrame frame = new JFrame("Adding Hours to " + student.getFullName() + "'s Service Project");
@@ -1773,6 +1855,12 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);	
 	 }
 	 
+	/** This GUI acts as a simple project selector screen that then redirects the user to another GUi for then selecting
+	 * and editing a specific project's hour. The selector screen was necessary with how the code was written.
+	  * 
+	  *  @param student
+	  *   A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 public static void editHoursPopup(Student student)
 	 {		 
 		 
@@ -1871,7 +1959,14 @@ public class CSA_AwardProgram {
 	 }
 	 
 	
-	 
+	 /** This is a GUI that allows the advisor to edit a service hour for a specific service project for a 
+	  * specific student. All that is required is the selection of a specific project and the revised date and time 
+	  * of service. Because of how the code is written, even if only the date or only the time is being changed, the 
+	  * hour must be updated entirely with both the new and unchanged items.
+	  * 
+	  * @param student
+	  *  A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 public static void editHoursGUI(Student student, ServiceProject sp)
 	 {
 		 JFrame frame = new JFrame("Service Hour Selection");
@@ -2019,7 +2114,12 @@ public class CSA_AwardProgram {
 	 }
 	 
 	 
-	 
+	 /** This GUI allows the user (FBLA advisor) to edit a specific student's specific project. All 
+	  * that can be changed are the title/name and description. No specific hours can be editing or deleted
+	  * here. A project must be selected with the "select" button before changes can be processed.
+	  * @param student
+	  * A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 public static void editProject(Student student)
 	 {
 		 JFrame frame = new JFrame("Editing Service Project");
@@ -2161,7 +2261,12 @@ public class CSA_AwardProgram {
 	 
 	 }
 	 
-	 
+		/** This GUI acts as a simple project selector screen that then redirects the user to another GUi for then selecting
+		 * and deleting a specific project's hour. The selector screen was necessary with how the code was written.
+		  * 
+		  *  @param student
+		  *   A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+		  */
 	 public static void deleteHoursPopup(Student student)
 	 {		 
 		 
@@ -2259,7 +2364,14 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);
 	 }
 
-	 
+	 /** This is a GUI that allows the advisor to delete a service hour for a specific service project for a 
+	  * specific student.
+	  * 
+	  * @param sp
+	  * 	A specific project is passed to as to refer to specific serviceHour objects easily.
+	  * @param student
+	  *   A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 public static void deleteHours(ServiceProject sp, Student student)
 	 {
 		 JFrame frame = new JFrame(sp.getName() + "'s Dates and Hours for Deletion");
@@ -2363,7 +2475,13 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);	
 	 }
 	 
-	 
+	 /** This GUI allows the user (FBLA advisor) to delete a specific student's specific project. No 
+	  * specific hours can be editing or deleted here. A project must be selected with the "select" 
+	  * button before changes can be processed.
+	  * 
+	  * @param student
+	  * A student is taken as a parameter to ensure the individual's information is being properly accessed and edited.
+	  */
 	 
 	 public static void deleteProjectGUI(Student student)
 	 {
@@ -2472,6 +2590,13 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);
 	 }
 	 
+	 /** This GUI introduces a dynamic backup feature by allowing the FBLA advisor to access a previous save file 
+	  * ordered by date and time. This keeps advisors from stressing about losing information from a mistake or if 
+	  * they simply want to revert to a previous date's file.
+	  * 
+	  * *Note: Only ONE date can be selected despite the ability to select many. Only the FIRST date will be 
+	  * selected for reversion if multiple are selected.
+	  */
 	 public static void restorePreviousInfo()
 	 {
 		 JFrame frame = new JFrame("Previous Information Restoration");
@@ -2617,6 +2742,10 @@ public class CSA_AwardProgram {
 	 }
 	 
 	
+	 /** This GUI allows advisors to select a specific CSA Award Category and print its' winners
+	  * and their hours. They are separated by Community (50+ hours), Service (200+ hours), and 
+	  * Achievement (500+ hours).
+	  */
 	 public static void buildAwardSelection()
 	 {
 		 JFrame frame = new JFrame("Award Report Selection");
@@ -2698,6 +2827,10 @@ public class CSA_AwardProgram {
 		 frame.setVisible(true);
 	 }
 	 
+	 /**
+	  * If the user has an complications or questions regarding the functionality or technicalities of the program, they may
+	  * refer to the FAQ Gui, where they may be able to find a solution.	 
+	  */
 	 public static void faqGUI()
 	 {
 		 JFrame frame = new JFrame("Frequently Asked Questions (FAQ)");
@@ -2891,12 +3024,17 @@ public class CSA_AwardProgram {
 	/*******************************************************************************************************/
 	public static void main(String[] args) throws BadLocationException
 	{
-		CSA_AwardProgram.buildWelcomeGUI();
 		
-		 //"C:/Users/1100299029/OneDrive - Fulton County Schools/FBLA Programming 2019/FBLACSA2019-2020/src/StudentDatabase.txt";
+		 try { 
+			  
+			 UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+		 } 
+	        catch (Exception e) { 
+	            System.out.println("Look and Feel not set"); 
+	        } 
 		 
-
-		
+		 
+		CSA_AwardProgram.buildWelcomeGUI();		
 		
 	}
 
