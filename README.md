@@ -2,9 +2,9 @@
 
 Alternative method of downloading Submission for 2020 Future Business Leaders of America Coding and Programming State Event.
 
-For all device types (Windows and Mac).
+*For **all** device types (Windows and Mac).*
 
-Note: Please make sure your computer login is NOT on an organization network, such as Fulton County Schools. This interfers with how certain files are called during execution. Additionally, please ensure you have a computer admin username and password.
+*Note: Please make sure your computer login is NOT on an organization network, such as Fulton County Schools. This interfers with how certain files are called during execution. Additionally, please ensure you have a computer admin username and password.*
 
 ## Running this program.
 ### Download Eclipse.
