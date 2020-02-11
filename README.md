@@ -1,9 +1,15 @@
 # V2.FBLA_Coding-Programming2020
 
+Alternative method of downloading Submission for 2020 Future Business Leaders of America Coding and Programming State Event.
+
+For all device types (Windows and Mac).
+
+Note: Please make sure your computer login is NOT on an organization network, such as Fulton County Schools. This interfers with how certain files are called during execution. Additionally, please ensure you have a computer admin username and password.
+
 ## Running this program.
 ### Download Eclipse.
 1. Download Eclipse [here](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R2/eclipse-inst-win64.exe).
-*Note: Eclipse is a coding environment/workspace, not a virus. Do not worry!*
+*Note: Eclipse is a coding environment/workspace, not a virus. Do not worry!* Use your admin username and password here if necessary.
 2. Select **"Eclipse IDE for Java Developers"** and the default as the installation folder. *Ex: "C:\Users\1100299029\eclipse\java-oxygen"*. Please ensure **"create start menu entry"** and **"create desktop shortcut"** are both checked.
 3. Accept terms of agreement and licenses.
 4. Wait as it downloads until the green loading bar text goes from "Installing..." to "Launch". **Press the button** to launch.
@@ -28,4 +34,4 @@
 15. Double-click on ***"CSA_AwardProgram.java"***. This opens up the java file.
 16. Find the **first green play button** in the menu bar underneath "File, Edit, Source...". To its left is a cartoon insect, and to its right is another green arrow with a green, yellow, and red bar.
 17. Click on the **black arrow** to the right of the basic green arrow and hover over **"Run As"**. This will show a sub-menu item with the title **"1 Java Application"**. Select this.
-18. Congratulations! The program is now open. Anytime you exit out of the program with the red "X" button on the top left, you do NOT need to repeat steps  16-17 to reopen the program. Simply press the basic green button.
+18. **Congratulations!** The program is now open. Anytime you exit out of the program with the red "X" button on the top left, you do NOT need to repeat steps  16-17 to reopen the program. Simply press the basic green button.
